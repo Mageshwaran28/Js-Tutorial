@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        document.querySelector('body').innerHTML="<h1>All the answer is inside the console</h1>   ";
+
+
+        console.log("-------------Data Types----------");
+        
+        // Numbers 
+        
+        let num = 34;
+        console.log(num );
+        console.log(typeof num );
+
+        num = 3.4;
+        console.log(num );
+        console.log(typeof num );
+
+        // Strings 
+        let str = 'a'
+        console.log(str );
+        console.log(typeof str );
+
+        str = "Hello, world!";
+        console.log(str );
+        console.log(typeof str );
+
+        // Boolean 
+
+        let bool = true;
+        console.log(bool );
+        console.log(typeof bool );
+
+        // null
+        let nullVar = null;
+        console.log(nullVar );
+        console.log(typeof nullVar ); // null is type of object
+
+        // undefined
+        let undefinedVar;
+        console.log(undefinedVar );
+        console.log(typeof undefinedVar );
+
+        // Object
+        let obj = {
+            name: "John",
+            age: 34,
+            city: "New York"
+        };
+        console.log(obj );
+        console.log(typeof obj );
+
+        // Array
+        let arr = [1,2,3,4,5];
+        console.log(arr );
+        console.log(typeof arr ); // Arrays are a special type of Object
+
+        console.log(Array.isArray(arr)) // return type is boolean if it is array then return true else false
+
+        // Date
+        let date = new Date();
+        console.log(date );
+        console.log(typeof date );
+
+        console.log("---------------- functions ----------------");
+
+        // Function
+        function myFunction() {
+            console.log("I am a function");
+        }
+        myFunction();
+
+        // function with arguments
+
+        console.log("---------- function with arguments----------");
+
+        myFunction1(2,5);
+
+        function myFunction1(x,y){
+            console.log(x + y);
+        }
+
+        // variable can be used as a function
+        console.log("---------- variable can be used as a function----------");
+
+        let myFunction2 = function(x,y){
+            console.log(x * y);
+        }
+        myFunction2(2,5);
+
+        // self invoking function
+        console.log("---------- self invoking function----------");
+
+        (function(){
+            console.log("I am a self invoking function");
+
+        })()
+
+        // arrow function
+        console.log("---------- arrow function----------");
+
+        let myFunction3 = () => {
+            console.log("I am an arrow function");
+        }
+
+        myFunction3();
+
+        // function rest parameter
+        console.log("---------- function rest parameter----------");
+
+        function myFunction4(...x){
+            console.log(x);
+        }
+        myFunction4(1,2,3,4,5);
+
+        // Arguments objects
+        console.log("---------- Arguments objects----------");
+
+        function myFunction5(){
+            for(let x of arguments){
+                console.log(x);
+            }
+        }
+
+        myFunction5(1,2,3,4,5);
+
+        // invoking a function with function constructor
+        console.log("---------- invoking a function with function constructor----------");
+
+        function myFunction6(){
+            this.firstName = arguments[0];
+            this.lastName = arguments[1];
+        }
+
+        let obj1 = new myFunction6("John","Doe");
+
+        console.log(obj1.firstName);
+        console.log(obj1.lastName);
+
+        // call method 
+
+        console.log("---------------call method---------------");
+
+        let person = {
+            fullName : function (age , gender){
+                console.log(this.firstName + " " + this.lastName + " " + age + " " + gender);
+            }
+        }
+
+        let person1 = {
+            firstName: "Magesh",
+            lastName: "waran"
+        }
+
+        person.fullName.call(person1 , 20 , "Male" )
+
+        // apply method
+        console.log("---------------apply method---------------");
+        // apply method is similar to the call method
+        // only difference is apply method accepts arguments in array
+
+        let person2 = {
+            fullName : function (age, gender){
+                console.log(this.firstName + " " + this.lastName + " " + age + " " + gender);
+            }
+        }
+
+        let person3 = {
+            firstName: "Magesh",
+            lastName: "waran"
+        }
+
+        person2.fullName.apply(person3 , [ 20 , "Male"] )
+
+        // variable createdwithout declaration is always global
+
+        console.log("---------------variable createdwithout declaration is always global---------------");
+
+        function myFunction7(){
+            a=4;
+        }
+        myFunction7();
+
+        console.log(a);
+
+        // nested function declaration
+        console.log("---------------nested function declaration---------------");
+
+        function myFunction8(){
+            console.log("Iam a function");
+            function myFunction9(){
+                console.log("Iam a nested function");
+            }
+            myFunction9();
+        }
+
+        myFunction8();
+
+
+        // create object 
+
+        console.log("---------------create object---------------");
+
+        let person4 =  {}
+        console.log(person4);
+
+        console.log("adding the key value in the object")
+
+        person4.firstName = "Magesh";
+        person4.lastName = "waran";
+        person4.age = 20;
+        console.log(person4);
+
+        // accessing the properties of the object
+        
+        console.log("---------------accessing the properties of the object---------------");
+
+        console.log(person4.firstName);
+        console.log(person4["lastName"]);
+        let ageVar = "age";
+        console.log(person4[ageVar]);
+
+        // for...in loop is through the properties of the object
+
+        console.log("---------------for...in loop is through the properties of the object---------------");
+        for(let key in person4){
+            console.log(key);
+        }
+
+        // by using the for...in loop is iterate the objects
+
+        console.log("---------------by using the for...in loop is iterate the objects---------------");
+
+        for(let key in person4){
+            console.log(person4[key]);
+        }
+
+        // delete property from the object
+
+        console.log("---------------delete property from the object---------------");
+
+        delete person4.age;
+        console.log(person4);
+
+        // create the nested object
+
+        console.log("---------------create the nested object---------------");
+        let person5 = {
+            name:{
+                firstName:"Aravind",
+                lastName:"Kumar"
+            },
+            age:22,
+        }
+
+        console.log(person5);
+
+        // get value from the nested object
+
+        console.log("---------------get value from the nested object---------------");
+
+        console.log(person5.name.firstName);
+        console.log(person5.name["lastName"]);
+
+        // add the properties in the nested object
+
+        console.log("---------------add the properties in the nested object---------------");
+
+        person5.name.initial = "S";
+
+        console.log(person5.name)
+
+        // delete the nested object properties
+
+        delete person5.name.initial;
+        console.log(person5.name);
+
+        // for...in loop in array it is return the index
+        // but in object it is through the properties of the object
+        console.log("---------------for...in loop in array it is return the index---------------");
+        let arr1 = [1,2,3,4,5];
+        for(let i in arr1){
+            console.log(i);
+        }
+
+        // nested array and object 
+        console.log("---------------nested array and object---------------");
+        let myObj = {
+            name: "John",
+            age: 30,
+            cars: [
+                {name:"Ford", models:["Fiesta", "Focus", "Mustang"]},
+                {name:"BMW", models:["320", "X3", "X5"]},
+                {name:"Fiat", models:["500", "Panda"]}
+            ]
+        }
+
+        console.log(myObj);
+
+        // access the car models from the nested objects and arrays
+        console.log("---------------access the car models from the nested objects and arrays---------------");
+
+        for(let x in myObj.cars){ // x is iterate the index of the array 0 , 1, 2
+            console.log(myObj.cars[x].name , "------- car name"); // cars[x].name is iterate the each car name
+            for(let y in myObj.cars[x].models){
+                console.log(myObj.cars[x].models[y]); // cars[x].models[y].name is iterate the models into each nested array
+            }
+        }
+
+        // displaying the objects in the website
+        console.log("---------------displaying the objects in the website---------------");
+
+        console.log("[object Object] this is output you will get");
+
+        // So we can use the Objects.value(ObjName) this is retrieve the values from the object
+        console.log("-------- So we can use the Objects.value(ObjName) object to retrieve the values from the object--------")
+
+        console.log(Object.values(myObj));
+
+        // another way to retrieve the values from the object is JSON.stringify(ObjName)
+        console.log("-------- another way to retrieve the values from the object is JSON.stringify(ObjName) --------");
+        console.log("It is convert the object to string . And it is convert the object functions but it can convert new Date() method");
+        console.log(JSON.stringify(myObj));
+
+        // constructor function for objects
+        console.log("---------------constructor function for objects---------------");
+
+        function Person(first,last,age,gender){
+            this.firstName = first;
+            this.lastName = last;
+            this.age = age;
+            this.gender = gender;
+        }
+
+        let person6 = new Person("bala", "Krishnan" , 20 , "Male");
+
+        console.log(person6);
+
+        // if you try to add the key in the constructor it is not possible
+        console.log("---------------if you try to add the key in the constructor it is not possible---------------");
+        Person.pno = 7339448499;
+        console.log(person6.pno);
+
+        // So we can use the prototype 
+        console.log("---------------So we can use the prototype---------------");
+        Person.prototype.pno = 7339448499;
+        console.log(person6.pno);
+
+        // for...of loop in the String it is iterating the each character from the string
+
+        let str1 = "Hello World";
+        for(let x of str1){
+            console.log(x);
+        }
+
+
+        console.log("");
+        // String Methods
+        console.log("---------------String Methods---------------");
+
+        let txt = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        console.log(txt);
+        // length method
+        console.log("length method");
+        console.log(txt.length);
+        // slice method with two arguments : start index , end index
+        console.log("-----slice method-------")
+        console.log(" slice method with two arguments : start , end")
+        console.log(txt.slice(0,5));
+        // if it has only one argument it wil take rest of the characters
+        console.log(" if it has only one argument it wil take rest of the characters");
+        console.log(txt.slice(10));
+        // if it is negative it will start at the end of the string
+        console.log(" if it is negative it will start at the end of the string");
+        console.log(txt.slice(-5));
+        // if it is both parameters are negative it will start at the end of the string
+        console.log(" if it is both parameters are negative it will start at the end of the string");
+        console.log(txt.slice(-5,-1));
+
+        console.log("")
+        // substring method
+        console.log("substring method");
+        console.log("substring() is similar to slice() . The difference is that start and end values less than 0 are treated as 0 in substring().");
+        console.log(txt.substring(0,5));
+
+
+        // substr method
+        console.log("substr method");
+        console.log("substr() is similar to slice() . The difference is that second parameter is treated as length of the characters in string.")
+        console.log(txt.substr(10,5));
+
+        // concat method
+        console.log("concat method");
+        txt = txt.concat(txt);
+        console.log(txt);
+
+        // replace method
+        console.log("replace method");
+        console.log(txt.replace("ABC","abc"));
+
+        // replaceAll method
+        console.log("replaceAll method");
+        console.log(txt.replaceAll("ABC","abc"));
+
+        // toLowercase method
+        console.log("toLowercase method");
+        txt = txt.toLowerCase();
+        console.log(txt);
+
+        // toUppercase method
+        console.log("toUppercase method");
+        txt = txt.toUpperCase();
+        console.log(txt);
+
+        // trim method
+        console.log("trim method");
+        txt = "     Hello World     ";
+        console.log("before trim method");
+        console.log(txt);
+        console.log("after trim method");
+        console.log(txt.trim());
+
+        // trimStart method
+        console.log("trimStart method");
+        txt = "     Hello World     ";
+        console.log("before trimStart method");
+        console.log(txt);
+        console.log("after trimStart method");
+        console.log(txt.trimStart());
+
+        // trimEnd method
+        console.log("trimEnd method");
+        txt = "     Hello World     ";
+        console.log("before trimEnd method");
+        console.log(txt);
+        console.log("after trimEnd method");
+        console.log(txt.trimEnd());
+
+        // padStart method
+        console.log("padStart method");
+        txt = "5";
+        console.log(txt.padStart(5,"*"));
+
+        // padEnd method
+        console.log("padEnd method");
+        console.log(txt.padEnd(5,"*"));
+
+        // toString method
+        console.log("toString method");
+        let number = 50;
+        console.log(typeof number);
+        let string = number.toString();
+        console.log(typeof string);
+
+        // charAt method
+        console.log("charAt method");
+        txt = "Hello World";
+        console.log(txt.charAt(0));
+
+        // charCodeAt method
+        console.log("charCodeAt method");
+        console.log(txt.charCodeAt(2));
+
+        // split method
+        console.log("split method");
+        console.log(txt.split(" "));
+        console.log(txt.split("o"));
+        console.log(txt.split("o",2));
+        console.log(txt.split(""));
+
+        // indexOf method
+        // it cannot take the regular expression
+        console.log("indexOf method");
+        txt = "ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        console.log(txt.indexOf("A"));
+
+        // lastindexOf method
+        console.log("lastIndexOf method");
+        console.log(txt.lastIndexOf("A"));
+
+        // search method
+        // it also take the regular expression
+        // it cannot take second postion
+        console.log("search method");
+        console.log(txt.search("o"));
+        console.log(txt.search(/A/));
+        console.log(txt.search(/a/i));
+
+        // regular expression //i is omit the case sensitive
+        // regular expression //g is check and store the entire string
+        // regular expression //gi is check and store the entire string and omit the case sensitive
+
+        // match method
+        console.log("match method");
+        console.log(txt.match("o"));
+        console.log(txt.match(/A/));
+        console.log(txt.match(/a/i));
+        console.log(txt.match(/o/gi));
+        console.log(txt.match(/A/g));
+
+        // matchAll method
+        console.log("matchAll method");
+        console.log(txt);
+        let res1 = txt.matchAll(/z/gi);
+        console.log(Array.from(res1));
+
+        // includes method
+        console.log("includes method");
+        console.log(txt.includes("o"));
+        console.log(txt.includes('A'));
+
+        // startsWith method
+        console.log("startsWith method");
+        console.log(txt.startsWith("Hello"));
+        console.log(txt.startsWith("A"));
+
+        // endsWith method
+        console.log("endsWith method");
+        console.log(txt.endsWith("World"));
+        console.log(txt.endsWith("Z"));
+
+
+        // templete literal
+        console.log("templete literal");
+        console.log(`I'm Mageshwaran . "God is Love"`);
+        console.log(`Hello ${txt}`);
+        console.log(`Hello ${txt.charAt(0)}`);
+        console.log(`Hello ${txt.charAt(0).toLowerCase()}`);
+        console.log(`My age is ${2+1+2+12+4}`);
+
+        // toString method with number
+
+        console.log("toString method with number");
+        let n = 28 ;
+        console.log(n.toString(2));
+        console.log(n.toString(8));
+        console.log(n.toString(10));
+        console.log(n.toString(16));
+        console.log(n.toString(32));
+
+        // Hexadecimal
+        console.log("Hexadecimal");
+        console.log(0xffff);
+
+        // octal
+        console.log("octal");
+        console.log(0o777);
+
+        // binary
+        console.log("binary");
+        console.log(0b1111111111);
+
+        // Infinite
+        console.log("Infinite");
+        console.log(Infinity);
+        console.log(-Infinity);
+
+        // toExponential method
+
+        n = 28.897;
+        console.log("toExponential method");
+        console.log(n.toExponential());
+        console.log(n.toExponential(0));
+        console.log(n.toExponential(2));
+
+        // toFixed method
+        console.log("toFixed method");
+        console.log(n.toFixed());
+        console.log(n.toFixed(0));
+        console.log(n.toFixed(2));
+        console.log(n.toFixed(3));
+        console.log(n.toFixed(4));
+
+        // toPrecision method
+        // it must be atleast 1 in the parameters
+        console.log("toPrecision method");
+        console.log(n.toPrecision());
+        console.log(n.toPrecision(2));
+        console.log(n.toPrecision(3));
+
+        // Number methods
+        console.log("---------------Number Methods---------------");
+        console.log(Number(true));
+        console.log(Number(false));
+        console.log(Number(null));
+        console.log(Number(undefined));
+        console.log(Number(10.11));
+        console.log(Number("Hello"));
+        console.log(Number(new Date())); // return the milliseconds
+
+        // parsInt method
+        console.log("----------parsInt method----------");
+        console.log(parseInt(false));
+        console.log(parseInt(10.33));
+        console.log(parseInt(new Date())); // return the NaN
+        console.log(parseInt("10 years"));
+        console.log(parseInt("years 19"));
+        console.log(parseInt("10 20 30"));
+
+        // parseFloat method
+        console.log("----------parseFloat method----------");
+        console.log(parseFloat(false));
+        console.log(parseFloat(10)); 
+        console.log(parseFloat(10.36)); 
+        console.log(parseFloat("10 years"));
+
+
+        
+        // Number.isInteger method
+        console.log("----------Number.isInteger method----------");
+        console.log(Number.isInteger(3456789));
+        console.log(Number.isInteger(10.36));
+        
+        // Number.isSafeInteger method
+        console.log("----------Number.isSafeInteger method----------");
+        console.log(Number.isSafeInteger(3456789));
+        console.log(Number.isSafeInteger(12345678901234567890));
+
+        // Number.parseInt method
+        // convert the string to an integer
+        console.log("----------Number.parseInt method----------");
+        console.log(Number.parseInt("3456789"));
+        console.log(Number.parseInt("10.36"));
+
+        // Number.MAX_VALUE method
+        console.log("----------Number.MAX_VALUE method----------");
+        console.log(Number.MAX_VALUE);
+
+        // Number.MIN_VALUE method
+        console.log("----------Number.MIN_VALUE method----------");
+        console.log(Number.MIN_VALUE);
+        
+        // Number.EPSILON method
+        console.log("----------Number.EPSILON method----------");
+        console.log(Number.EPSILON);
+
+        // Number.MAX_SAFE_INTEGER method
+
+        console.log("----------Number.MAX_INTEGER method----------");
+        console.log(Number.MAX_SAFE_INTEGER);
+
+        // Number.MIN_SAFE_INTEGER method
+        console.log("----------Number.MIN_SAFE_INTEGER method----------");
+        console.log(Number.MIN_SAFE_INTEGER);
+
+        // Number.POSITIVE_INFINITY method
+        console.log("----------Number.POSITIVE_INFINITY method----------");
+        console.log(Number.POSITIVE_INFINITY);
+        
+        // Number.NEGATIVE_INFINITY method
+        console.log("----------Number.NEGATIVE_INFINITY method----------");
+        console.log(Number.NEGATIVE_INFINITY);
+
+        // Math object methods
+        console.log("---------------Math object methods---------------");
+
+        // Math.PI method
+        console.log("----------Math.PI method----------");
+
+        console.log(Math.PI);
+
+        // Math.round method
+        // return the nearest integer
+        console.log("----------Math.round method----------");
+        console.log(Math.round(10.6));
+        console.log(Math.round(10.5));
+        console.log(Math.round(10.4));
+
+        // Math.floor method
+        // return the nearest down integer
+        console.log("----------Math.floor method----------");
+        console.log(Math.floor(10.6));
+        console.log(Math.floor(10.5));
+        console.log(Math.floor(10.4));
+
+        // Math.ceil method
+        // return the nearest up integer
+        console.log("----------Math.ceil method----------");
+        console.log(Math.ceil(10.6));
+        console.log(Math.ceil(10.5));
+        console.log(Math.ceil(10.4));
+
+        // Math.abs method
+        // return the absolute value
+        console.log("----------Math.abs method----------");
+        console.log(Math.abs(-10));
+        console.log(Math.abs(10));
+        console.log(Math.abs(0));
+        
+        // Math.trunc method
+        // return the integer value
+        console.log("----------Math.trunc method----------");
+        console.log(Math.trunc(10.6));
+        console.log(Math.trunc(10.5));
+        console.log(Math.trunc(10.4));
+
+        // Math.sign method
+        // return the number is +ve or null or -ve
+        console.log("----------Math.sign method----------");
+        console.log(Math.sign(10));
+        console.log(Math.sign(0));
+        console.log(Math.sign(-10));
+
+        // Math.pow(x,y) method
+        // return the x power y value
+        console.log("----------Math.pow(x,y) method----------");
+        console.log(Math.pow(2,3));
+
+        // Math.sqrt method
+        console.log("--------Math.sqrt method------");
+        console.log(Math.sqrt(64));
+        console.log(Math.sqrt(69));
+
+
+        // Math.min method
+        console.log("--------Math.min method--------");
+        console.log(Math.min(100,28,38,3,78));
+
+        // Math.max method
+        console.log("--------Math.max method--------");
+        console.log(Math.max(100,28,38,3,78));
+
+        // Math.log method
+        console.log("---------------Math.log method----------");
+        console.log(Math.log(2));
+        console.log(Math.log2(2));
+        console.log(Math.log10(100));
+
+        // Math.random method
+        // this will return random number between 0 and 1   
+        console.log("-------Math.rabdom method--------");
+        console.log(Math.random());
+        console.log(Math.floor(Math.random()*10)); // Math.floor is help us to round down the number and *10 is define range upto 0 to 9
+        console.log(Math.floor(Math.random()*10)+10);  //*10 is return the random number between 0 and 9 , +10 is starting number . So this random number inbetween 10 and 20
+
+    
+        // Array methods 
+        console.log("--------------- Array methods----------");
+        let array = [10,20,30,40,50,60];
+        console.log(array);
+
+        // Array.length methods 
+        console.log("--------------- Array.length methods----------");
+        console.log(array.length);
+
+        // Array.toString method
+        console.log("--------------- Array.toString method----------")
+        console.log(array.toString());
+
+        // Array.pop method 
+        // it will get and remove the last element 
+        console.log("-----------Array.pop method--------");
+        console.log(array.pop());
+        console.log(array);
+
+        // Array.push method
+        console.log("-------Array.push method---------");
+        console.log(array.push(60)); // it will return the length of the array in current
+        console.log(array);
+
+        // Array.shift method
+        // remove the first element
+        console.log("-------Array.shift method--------");
+        console.log(array.shift()); 
+        console.log(array);
+
+        // Array.unshift method
+        // add in the starting position
+        console.log("-------Array.unshift method--------");
+        console.log(array.unshift(10));
+        console.log(array);
+
+
+        // delete method only removes the value at specified position
+        console.log("-------Array.delete method--------")
+        console.log(delete array[0]);
+        console.log(array);
+
+        // Array.concat method
+        array[0] = 10;
+        let array1 = [70,80,90,100];
+        console.log("Array.concat method--------");
+        console.log(array1.concat(array));
+
+        // Array.flat method
+        // it will convert the 2d array into 1d array
+        console.log("------------Array.flat method--------");
+        let array2 = [10,[20,30,40],[50,60,[70,80,[90,100]],110]];
+        console.log(array2.flat());
+
+        // Array.splice method
+        // this can use both add and remove at the same time or synchronize with proper parameters
+        // if it is one parameter it will remove at that position 
+        // else it will add the more than one element at that position . 1st parameter is pos 2nd parameter how many elements can be removed at that position and at 3rd and more parameter is value  to add
+        console.log("------------Array.splite method--------");
+        console.log(array.splice(1 , 0 , 200 , 300));
+        console.log(array)
+
+        // array.slice method
+        console.log(array.slice(2));
+
+
+    </script>
+</body>
+</html>
